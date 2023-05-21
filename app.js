@@ -9,7 +9,11 @@ require('dotenv/config');  // FOR HIDDING CREDENTIALS
 require('./conn');         // IMPORTING CONNECTION OBJECT FROM conn.js file
 
 // IMPORTING MEDDLEWARE
-app.use(cors());
+app.use(cors({
+    origin: process.env.BASE_URL,
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}));
 app.use(express.json());
 app.use(cookiePasder());
 // Importing Routes
